@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('back-end:server');
 var http = require('http');
+var mongoose = require('mongoose');
 
 /**
  * Get port from environment and store in Express.
@@ -22,12 +23,34 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
+ * Print error reason when exit.
+ */
+
+process.on('exit', function (code) {
+  switch (code) {
+    case 29:
+      return console.error("Logging: connect to fake-umbrella failed.");
+    default:
+      return console.error("Unknown Error.");
+  }
+});
+
+/**
+ * Connect MongoDb fake-umbrella database
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+(async () => {
+  try {
+    await mongoose.connect(`mongodb://localhost:27017/fake-umbrella`);
+    console.log("Mongodb fake-umbrella connected.");
+  } catch (e) {
+    process.exit(29);
+  }
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+})();
 
 /**
  * Normalize a port into a number, string, or false.
