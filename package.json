@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "serverstart": "DEBUG=back-end:* npm run devstart"
+    "serverstart": "DEBUG=back-end:* npm run devstart",
+    "nodedebug": "node --nolazy --inspect-brk=9229 ./bin/www",
+    "debug": "nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
