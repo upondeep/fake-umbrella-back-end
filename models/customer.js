@@ -15,4 +15,11 @@ CustomerSchema.virtual('customer_id').get(function () {
     return this._id;
 });
 
+// other methods don't work
+CustomerSchema.set('toJSON', {
+    virtuals: true,
+    versionKey: false,
+    transform: function (doc, ret) { delete ret._id; delete ret.id; }
+});
+
 module.exports = mongoose.model('CustomerModel', CustomerSchema);
