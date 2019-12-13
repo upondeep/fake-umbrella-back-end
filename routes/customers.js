@@ -5,11 +5,11 @@ var customer_controller = require('../controllers/customersController');
 
 router.get('/', customer_controller.get_all_customers);
 
-router.post('/create', customer_controller.create_customer);
+router.post('', customer_controller.create_customer);
 
 router.delete('/:id', customer_controller.delete_customer);
 
-router.put('/update', customer_controller.update_customer);
+router.put('', customer_controller.update_customer);
 
 router.get('/:id', customer_controller.get_customer);
 
