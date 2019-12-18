@@ -48,7 +48,7 @@ exports.update_customer = async function (req, res, next) {
         id = req.body.customer_id;
         await CustomerModel.find({ _id: id }).update(req.body);
         result = await CustomerModel.find({ _id: id });
-        return res.status(204).send(result);
+        return res.status(200).send(result);
     } catch (e) {
         return res.status(500).send({ error: 'update document failed.' });
     }
