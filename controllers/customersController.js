@@ -36,7 +36,7 @@ exports.delete_customer = async function (req, res, next) {
     try {
         var id = req.params.id;
         await CustomerModel.find({ _id: id }).remove().exec();
-        return res.status(200).send("customer deleted.");
+        return res.status(200).send({ status: 'deleted.' });
     } catch (e) {
         return res.status(500).send({ error: 'delete failed.' });
     }
