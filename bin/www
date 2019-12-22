@@ -42,7 +42,11 @@ process.on('exit', function (code) {
 
 (async () => {
   try {
-    await mongoose.connect(`mongodb://localhost:27017/fake-umbrella`);
+    await mongoose.connect(`mongodb://localhost:27017/fake-umbrella`,
+      {
+        reconnectTries: Number.MAX_VALUE,
+        reconnectInterval: 5000, // Reconnect every 5 sec
+      });
     console.log("Mongodb fake-umbrella connected.");
   } catch (e) {
     process.exit(29);
