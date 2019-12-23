@@ -1,0 +1,10 @@
+# This is a demo for fake-umbrella
+
+For linux you can just run the docker-compose file I send you.
+
+For windows you have to build and serve the app yourself.
+1. Install ***Node 12***, ***Mongodb***
+2. Create database ***fake-umbrella*** in Mongodb
+3. Download **upondeep/fake-umbrella-front-end** and run **`"npm install & ng serve"`**
+4. Download **upondeep/fake-umbrella-back-end** and run **`"npm install & npm run start"`**
+5. Open http://localhost:4200
